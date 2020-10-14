@@ -5,7 +5,8 @@ const navBar = document.getElementById("topNav");
 navLinks.style.left = "100vw";
 hero.style.display = "flex";
 navIcon.addEventListener("click", menu);
-
+const slideImages = ["css/img/slideShowA.jpg", "css/img/slideShowB.jpg", "css/img/slideShowC.jpg"];
+/* OPEN THE HAMBURGER MENU AT THE TOP OF THE PAGE */
 function menu(){
       
         if (navLinks.style.left === "100vw"){
@@ -29,5 +30,38 @@ $(document).ready(function () {
     
   });
 });
+let count = 0;
 
+/* SLIDESHOW BELOW THE "YOU GRILL WE CHILL" div */
+
+index = 0;
+const rightArrow = document.getElementById("rightArrow");
+const leftArrow = document.getElementById("leftArrow");
+const slideShow = document.getElementById("flavorSlideShow");
+leftArrow.addEventListener("click", downOne);
+rightArrow.addEventListener("click", upOne);
+let time = 3000;
+
+
+function upOne() {
+  if(index === 2){
+    index = 0;
+  } else {
+    index += 1;
+  }
+  slider(index);
+}
+
+function downOne(){
+  if(index === 0){
+    index = 2;
+  } else{
+    index -= 1;
+  }
+  slider(index);
+}
+
+function slider(index) {
+  slideShow.style.backgroundImage = "url("+slideImages[index]+")";
+}
 
